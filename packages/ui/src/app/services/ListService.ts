@@ -6,16 +6,26 @@ import {
   LoadingService,
   LoadingStore
 } from "~/components/Loading/LoadingService";
+import { ITransaction } from "demo-nest-api/src/modules/transaction/transaction.model";
 import { API } from "@env/config";
 
 export const ListService = createService(
   () => {
     const state = useLocalStore(() => ({
       loadingService: null as LoadingStore,
-      data: [] as any[],
+      data: [] as ITransaction[],
       async load() {
         state.loadingService.setLoading(true, "dashboard");
-        await new Promise(r => setTimeout(r, 1000));
+        try {
+          const responce = await fetch(`${API}v1/transaction/list`);
+          const json = await responce.json();
+          state.data = json.data;
+        } catch (error) {
+          console.error(error);
+          toast("There was an error while loading data", {
+            type: "error"
+          });
+        }
         state.loadingService.setLoading(false, "dashboard");
       }
     }));
