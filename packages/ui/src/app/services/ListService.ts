@@ -8,6 +8,8 @@ import {
 } from "~/components/Loading/LoadingService";
 import { ITransaction } from "demo-nest-api/src/modules/transaction/transaction.model";
 import { API } from "@env/config";
+import { useOnLoad } from "~/hooks";
+import { fetchJson } from "~/utils";
 
 export const ListService = createService(
   () => {
@@ -17,9 +19,9 @@ export const ListService = createService(
       async load() {
         state.loadingService.setLoading(true, "dashboard");
         try {
-          const responce = await fetch(`${API}v1/transaction/list`);
-          const json = await responce.json();
-          state.data = json.data;
+          state.data = await fetchJson<ITransaction[]>(
+            `${API}v1/transaction/list`
+          );
         } catch (error) {
           console.error(error);
           toast("There was an error while loading data", {
@@ -33,5 +35,6 @@ export const ListService = createService(
   },
   state => {
     state.loadingService = React.useContext(LoadingService);
+    useOnLoad(state.load);
   }
 );
