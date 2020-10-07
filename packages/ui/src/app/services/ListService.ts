@@ -8,8 +8,10 @@ import {
 } from "~/components/Loading/LoadingService";
 import { ITransaction } from "demo-nest-api/src/modules/transaction/transaction.model";
 import { API } from "@env/config";
-import { useOnLoad } from "~/hooks";
+import { useOnLoadPathnameRegExp } from "~/hooks";
 import { fetchJson } from "~/utils";
+
+const DASHBOARD_PATH_REGEXP = /^\/dashboard/i;
 
 export const ListService = createService(
   () => {
@@ -35,6 +37,6 @@ export const ListService = createService(
   },
   state => {
     state.loadingService = React.useContext(LoadingService);
-    useOnLoad(state.load);
+    useOnLoadPathnameRegExp(DASHBOARD_PATH_REGEXP, state.load);
   }
 );
