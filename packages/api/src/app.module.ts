@@ -1,8 +1,7 @@
 import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
 import { ServeStaticModule } from "@nestjs/serve-static";
-import { DomainModule } from "./modules/domain/domain.module";
-import { DB_CONFIG, PUBLIC_FOLDER } from "@env/config";
+import { TransactionModule } from "./modules/transaction/transaction.module";
+import { PUBLIC_FOLDER } from "@env/config";
 
 @Module({
   imports: [
@@ -11,8 +10,7 @@ import { DB_CONFIG, PUBLIC_FOLDER } from "@env/config";
       renderPath: "/",
       exclude: ["/v1/*"]
     }),
-    TypeOrmModule.forRoot(DB_CONFIG),
-    DomainModule
+    TransactionModule
   ],
   controllers: [],
   providers: []

@@ -1,5 +1,3 @@
-import { bootstrapAPI } from './server';
-import { bootstrapMS } from './ms';
+import { bootstrapAPI } from "./server";
 
 bootstrapAPI();
-bootstrapMS();

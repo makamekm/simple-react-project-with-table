@@ -4,7 +4,6 @@ import { LayoutService } from "./services/LayoutService";
 import { observer } from "mobx-react";
 import { useHistory } from "react-router";
 import { Button } from "~/components/Button/Button";
-import { AddListModal } from "./modals/AddListModal";
 
 export const AppLayout: React.FC = observer(({ children }) => {
   const history = useHistory();
@@ -24,7 +23,6 @@ export const AppLayout: React.FC = observer(({ children }) => {
       />
       <div className="min-h-screen">
         <div className="lg:flex">
-          {/* {service.sidebar && <SideMenu />} */}
           <div className="relative flex-1 flex flex-col min-h-screen">
             <div className="flex-1 flex flex-col">
               {!service.empty && (
@@ -36,17 +34,8 @@ export const AppLayout: React.FC = observer(({ children }) => {
                         history.push("/");
                       }}
                     >
-                      Dashboard
+                      Home
                     </Button>
-                  </div>
-                  <div>
-                    <AddListModal>
-                      {({ open }) => (
-                        <Button className="-mx-4" onClickEnter={open}>
-                          + New List
-                        </Button>
-                      )}
-                    </AddListModal>
                   </div>
                 </div>
               )}
