@@ -6,11 +6,14 @@ import { Toggle } from "~/components/Toggle/Toggle";
 import { Dropdown } from "~/components/Dropdown/Dropdown";
 import { Typeahead } from "~/components/Typeahead/Typeahead";
 
+const typeaheadMockData = ["jhghjghj", "kjhjkgh"];
+
 export const Dashboard = observer(() => {
   useLayoutConfig({});
 
   const state = useLocalStore(() => ({
-    checked0: false
+    checked0: false,
+    typeahead0: [] as typeof typeaheadMockData
   }));
 
   return (
@@ -31,13 +34,15 @@ export const Dashboard = observer(() => {
       <div className="mt-4 w-4/6">
         <HeaderSection no="2" title="Typeahead" />
         <Typeahead
-          selected={[]}
-          options={[
-            {
-              id: "asdasd",
-              title: "test"
-            }
-          ]}
+          placeholder="Add items..."
+          autoFocus
+          multiple
+          allowNew
+          onChange={values =>
+            state.typeahead0.splice(0, state.typeahead0.length, ...values)
+          }
+          selected={state.typeahead0}
+          options={typeaheadMockData}
         >
           dfsfsdfdsf
         </Typeahead>
