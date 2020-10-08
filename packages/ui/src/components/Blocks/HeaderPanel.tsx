@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HeaderPanel = (props: { icon?: string; title?: any; text?: any }) => (
+export const HeaderPanel = (props: {
+  icon?: string;
+  title?: any;
+  text?: any;
+}) => (
   <div className="mb-4">
     <div className="mb-5 text-center">
       <Link to="/" className="d-inline-block">
@@ -14,7 +18,5 @@ const HeaderPanel = (props: { icon?: string; title?: any; text?: any }) => (
 );
 
 HeaderPanel.defaultProps = {
-  title: "",
+  title: ""
 };
-
-export { HeaderPanel };

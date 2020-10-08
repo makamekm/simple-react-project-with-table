@@ -1,10 +1,10 @@
 import React from "react";
 import classNames from "classnames";
 
-const HeaderMain = ({
+export const HeaderMain = ({
   subTitle,
   title,
-  className,
+  className
 }: {
   title?: any;
   subTitle?: any;
@@ -27,7 +27,5 @@ const HeaderMain = ({
 HeaderMain.defaultProps = {
   title: "",
   subTitle: "",
-  className: "",
+  className: ""
 };
-
-export { HeaderMain };
