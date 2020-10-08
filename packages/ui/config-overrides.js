@@ -15,5 +15,8 @@ module.exports = override(
       process.env.MAIN_ENV || process.env.ENV || "prod"
     ),
     "~": path.resolve(__dirname, "src/"),
+    react: path.resolve(__dirname, "node_modules/react"),
+    "react-router": path.resolve(__dirname, "node_modules/react-router"),
+    "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
   })
 );

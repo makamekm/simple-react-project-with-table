@@ -8,8 +8,7 @@ import {
 } from "~/components/Loading/LoadingService";
 import { ITransaction } from "demo-nest-api/src/modules/transaction/transaction.model";
 import { API } from "@env/config";
-import { useOnLoadPathnameRegExp } from "~/hooks";
-import { fetchJson } from "~/utils";
+import { fetchJson, useOnLoadPathnameRegExp } from "demo-nest-ui-shared";
 
 const DASHBOARD_PATH_REGEXP = /^\/dashboard/i;
 
