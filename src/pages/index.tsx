@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 import Title from "~/components/Title";
+import { CORS } from "@env/config";
 
 const Home: React.FC = () => (
   <div className="container">
@@ -12,6 +13,8 @@ const Home: React.FC = () => (
 
     <main>
       <Title />
+
+      {CORS ? "true" : "false"}
 
       <p className="description">
         Get started by editing <code>pages/index.js</code>

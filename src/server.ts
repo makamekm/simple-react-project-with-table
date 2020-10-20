@@ -2,7 +2,7 @@ import { NestFactory } from "@nestjs/core";
 import * as path from "path";
 import { AppModule } from "./app.module";
 import { CORS } from "@env/config";
-import { NextModule } from "./modules/next/next.module";
+import { NextModule } from "@nestpress/next";
 
 export async function bootstrapAPI() {
   const app = await NestFactory.create(AppModule, { cors: CORS });
@@ -11,10 +11,14 @@ export async function bootstrapAPI() {
   app
     .get(NextModule)
     .prepare({
-      dir: path.resolve(process.cwd(), "../ui")
+      dir: path.resolve(process.cwd()),
       // conf: {
       //   basePath: "/",
       // },
+      quiet: false,
+      conf: {
+        // distDir: 'build',
+      }
     })
     .then(() => {
       app.listen(port, () => {

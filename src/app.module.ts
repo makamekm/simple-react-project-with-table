@@ -2,8 +2,8 @@ import { MiddlewareConsumer, Module, RequestMethod } from "@nestjs/common";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { TransactionModule } from "./modules/transaction/transaction.module";
 import { PUBLIC_FOLDER } from "@env/config";
-import { NextMiddleware } from "./modules/next/next.middleware";
-import { NextModule } from "./modules/next/next.module";
+import { NextMiddleware, NextModule } from "@nestpress/next";
+import { NextController } from "./next.controller";
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { NextModule } from "./modules/next/next.module";
     // }),
     TransactionModule
   ],
-  controllers: [],
+  controllers: [NextController],
   providers: []
 })
 export class AppModule {

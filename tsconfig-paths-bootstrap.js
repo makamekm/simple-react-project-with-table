@@ -8,14 +8,6 @@ tsConfig.compilerOptions.paths["@env/*"] = [
   `./src/env/${process.env.MAIN_ENV || process.env.ENV || "prod"}/*`,
 ];
 
-tsConfig.compilerOptions.paths["react"] = [
-  path.resolve(__dirname, "node_modules/react"),
-];
-
-tsConfig.compilerOptions.paths["react-dom"] = [
-  path.resolve(__dirname, "node_modules/react-dom"),
-];
-
 tsConfigPaths.register({
   baseUrl: tsConfig.compilerOptions.baseUrl,
   paths: tsConfig.compilerOptions.paths,
