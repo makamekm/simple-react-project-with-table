@@ -4,6 +4,7 @@ import { TransactionModule } from "./modules/transaction/transaction.module";
 import { PUBLIC_FOLDER } from "@env/config";
 import { NextMiddleware, NextModule } from "@nestpress/next";
 import { NextController } from "./next.controller";
+import { FrontendMiddleware } from "./frontend.middleware";
 
 @Module({
   imports: [
@@ -36,5 +37,13 @@ export class AppModule {
       path: "favicon.ico",
       method: RequestMethod.GET
     });
+
+    consumer
+      .apply(FrontendMiddleware)
+      .exclude("api/(.*)")
+      .forRoutes({
+        path: "*",
+        method: RequestMethod.GET
+      });
   }
 }

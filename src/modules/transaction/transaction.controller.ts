@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body } from "@nestjs/common";
 import { TransactionService } from "./transaction.service";
 
-@Controller("v1/transaction")
+@Controller("api/v1/transaction")
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 

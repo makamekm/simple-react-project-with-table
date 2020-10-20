@@ -12,12 +12,14 @@ export async function bootstrapAPI() {
     .get(NextModule)
     .prepare({
       dir: path.resolve(process.cwd()),
-      // conf: {
-      //   basePath: "/",
-      // },
       quiet: false,
       conf: {
-        // distDir: 'build',
+        webpack: (config, _options) => {
+          config.resolve.plugins[0].paths["@env/*"] = [
+            `./src/env/${process.env.MAIN_ENV || process.env.ENV || "prod"}/*`
+          ];
+          return config;
+        }
       }
     })
     .then(() => {
