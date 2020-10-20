@@ -9,11 +9,12 @@ import { FrontendMiddleware } from "./frontend.middleware";
 @Module({
   imports: [
     NextModule,
-    // ServeStaticModule.forRoot({
-    //   rootPath: PUBLIC_FOLDER,
-    //   renderPath: "/",
-    //   exclude: ["/v1/*"],
-    // }),
+    ServeStaticModule.forRoot({
+      rootPath: PUBLIC_FOLDER,
+      serveRoot: "/asset/"
+      // renderPath: "/",
+      // exclude: ["/api/*"],
+    }),
     TransactionModule
   ],
   controllers: [NextController],
@@ -40,7 +41,7 @@ export class AppModule {
 
     consumer
       .apply(FrontendMiddleware)
-      .exclude("api/(.*)")
+      .exclude("api/(.*)", "asset/(.*)")
       .forRoutes({
         path: "*",
         method: RequestMethod.GET
