@@ -38,7 +38,10 @@
     "rxjs": "^6.5.4",
     "sqlite3": "^5.0.0",
     "typeorm": "^0.2.25",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "next": "^9.0.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
