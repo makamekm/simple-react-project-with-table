@@ -2,10 +2,6 @@ import React from "react";
 import { useLocalStore } from "mobx-react";
 import { toast } from "react-toastify";
 import { createService } from "react-service-provider";
-import {
-  LoadingService,
-  LoadingStore
-} from "~/components/Loading/LoadingService";
 import { ITransaction } from "demo-nest-api/src/modules/transaction/transaction.model";
 import { API } from "@env/config";
 import { fetchJson, useOnLoadPathnameRegExp } from "demo-nest-ui-shared";
@@ -15,10 +11,10 @@ const DASHBOARD_PATH_REGEXP = /^\/dashboard/i;
 export const ListService = createService(
   () => {
     const state = useLocalStore(() => ({
-      loadingService: null as LoadingStore,
+      loading: false,
       data: [] as ITransaction[],
       async load() {
-        state.loadingService.setLoading(true, "dashboard");
+        state.loading = true;
         try {
           state.data = await fetchJson<ITransaction[]>(
             `${API}v1/transaction/list`
@@ -29,13 +25,12 @@ export const ListService = createService(
             type: "error"
           });
         }
-        state.loadingService.setLoading(false, "dashboard");
+        state.loading = false;
       }
     }));
     return state;
   },
   state => {
-    state.loadingService = React.useContext(LoadingService);
     useOnLoadPathnameRegExp(DASHBOARD_PATH_REGEXP, state.load);
   }
 );
