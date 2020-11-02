@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@env/*": ["./src/env/prod/*"],
-      "~/*": ["./src/*"]
-    }
-  }
-}
