@@ -90,7 +90,7 @@
     "pkg": "^4.4.9",
     "styled-jsx": "^3.3.1",
     "tailwindcss": "^1.9.6",
-    "react-service-provider": "^1.2.0",
+    "react-service-provider": "^1.2.1",
     "commitizen": "^4.2.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.3.0",
