@@ -2,6 +2,7 @@ import { observer, enableStaticRendering } from "mobx-react";
 import React from "react";
 import { useServiceProvider } from "react-service-provider";
 import { Services } from "~/components/Services";
+import "~/components/index.scss";
 
 if (typeof window === "undefined") {
   enableStaticRendering(true);
